@@ -105,8 +105,8 @@ step1 ansible_host=192.168.56.11 ansible_user=vagrant ansible_port=22 ansible_ss
 ```
 
 설치하면 아래와 같은 구성과 같이 설치된다.
-- 파란색 흐름 - CI(통합빌드)를 의미, 소스코드를 받아 빌드, dockerizing하고 docker hub에 push한다.
-- 빨간색 흐름 - CD(배포)를 의미, Gitops에 변경된 버전을 확인하여 정의된 배포 전략에 따라 배포를 수행한다.
+- 파란색 흐름 - CI(통합빌드)를 의미, 원격 저장소가 Jenkins의 job 트리거 조건(webhook, push 등등)을 만족 시 소스코드를 받아 빌드, dockerizing하고 docker hub에 push한다.
+- 빨간색 흐름 - CD(배포)를 의미, Argocd가 Gitops에 변경된 버전을 확인하여 정의된 배포 전략에 따라 배포를 수행한다.
 
 ![cicd-msa-env](https://user-images.githubusercontent.com/112376183/201487394-ebf3a507-aa51-4cb1-87e3-08b283a868fe.png)
 
@@ -120,6 +120,10 @@ step1 ansible_host=192.168.56.11 ansible_user=vagrant ansible_port=22 ansible_ss
 - sample-api - https://github.com/{{개인ID}}/sample-api.git
 - sample-gitops - https://github.com/{{개인ID}}/sample-gitops.git
 
+프로젝트들을 fork 후 sample-api 프로젝트의 sample-api/Jenkinsfile 에 define 되어있는 gitUrl, gitOpsUrl 을 수정한다.
+
+- def gitUrl = "https://github.com/{{개인ID}}/${PROJECT_NAME}.git"
+- def gitOpsUrl = "https://github.com/{{개인ID}}/sample-gitops.git"
 
 ### CI구성
 
