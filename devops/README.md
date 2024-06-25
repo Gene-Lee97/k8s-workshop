@@ -137,6 +137,7 @@ sudo service docker restart
 
 #2.계정 생성 및 비밀번호 변경
 #admin/admin1234 로 관리자 계정 생성(UI에서)
+#Jenkins의 초기 관리자 비밀번호를 출력하기 위한 명령어
 cat /var/lib/jenkins/secrets/initialAdminPassword
 
 #3.로그인 후 플러그인 설치
