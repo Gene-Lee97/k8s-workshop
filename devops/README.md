@@ -49,6 +49,9 @@ ssh로 id,password로 접속하기 위해 각 환경의 ssh server의 설정을 
 # To disable tunneled clear text passwords, change to no here!
 PasswordAuthentication yes --> 이 부분을 no에서 yes로 변경
 ...
+#sudo vi /etc/ssh/sshd_config.d/60-clouding-setting-conf
+PasswordAuthentication no --> 이 부분을 no에서 yes로 변경 
+...
 #설정파일 수정 후 ssh 데몬을 restart해야 한다.
 #sudo systemctl restart ssh
 ```
@@ -83,6 +86,8 @@ ssh vagrant@192.168.56.11
 #### starter-kit 설치
 
 [msa-starter-kit](https://github.com/oscka/msa-starter-kit)을 clone하여 다음과 같이 설치
+
+ansible에서는 설치 대상(target) 정보를 인벤토리(Inventory) 라는 개념으로 관리하며 인벤토리(여러가지 형태가 있지만 여기서는 host-vm 이다.) 정보를 설치 대상 VM정보에 맞게 업데이트 해 주어야 한다.
 
 사전에 playbooks/host-vm 파일의 내용을 아래와 같이 수정하여 ansible이 작업을 실행할 수 있게 설정한다. 
 
