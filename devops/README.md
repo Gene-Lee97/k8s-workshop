@@ -29,12 +29,27 @@
 ### 환경준비
 
 다음과 같이 vagrant(virtualbox)기반으로 vm을 두 대 생성한다. 
+vagrant 파일을 위치시킬 dir을 생성하되 각각의 vagrant 파일을 다른 dir에 위치시킨다.
+
 - vm1(ansible1) - agent역할, ansible 코드를 받아 target서버에 설치를 수행한다.
   - 파일 위치 - [vagrant\vbox\ansible1\Vagrantfile](https://raw.githubusercontent.com/oscka/k8s-workshop/main/vagrant/vbox/ansible1/Vagrantfile)
   - 권장 사양 - 4core, 4G ram
 - vm2(ansible2) - target역할, jenkins 및 k3s기반 클러스터, sample-api가 실행된다.
   - 파일 위치 - [vagrant\vbox\ansible2\Vagrantfile](https://raw.githubusercontent.com/oscka/k8s-workshop/main/vagrant/vbox/ansible2/Vagrantfile)
   - 권장 사양 - 8core, 8G ram
+
+VM 생성
+- vagrant 파일 생성 및 수정 후 vagrant로 실행하여 vm을 생성한다.
+
+```zsh
+#각각의 vagrant 위치에서 실행한다.
+...
+# vagrant init
+vagrant 파일 생성 --> VM 조건에 맞게 수정  
+...
+# vagrant up
+생성한 vagrant 파일을 실행하여 VM 생성
+```
 
 주의사항
 - vm1은 로컬이 리눅스 환경이거나, 윈도우의 wsl이라도 상관은 없다.
